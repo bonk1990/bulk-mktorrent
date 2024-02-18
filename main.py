@@ -50,6 +50,9 @@ def make_torrent(TO, TRACKER, ANNOUNCE_URL, PATH):
     print(myCmd)
     os.system(myCmd)
 
+def copy_torrent(TO, COPY):
+    os.system(f'cp "{TO}"/*.torrent "{COPY}"')
+
 if __name__ == "__main__":
     load_dotenv()
     ANNOUNCE_URL = os.getenv("ANNOUNCE_URL")
@@ -71,5 +74,5 @@ if __name__ == "__main__":
     print(f'Creating a torrent for each of the files/folders in {FROM} to {TO}\n')
     for PATH in dirs:
         make_torrent(TO, TRACKER, ANNOUNCE_URL, PATH)
-
+        copy_torrent(TO, COPY)
 
